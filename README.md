@@ -108,5 +108,3 @@ SQS_QUEUE_URL=your_sqs_queue_url
 ## Author
 
 Pham Thanh Lam — Network Security Student @ UIT
-
-## Project Structure
