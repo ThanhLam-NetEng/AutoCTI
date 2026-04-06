@@ -9,7 +9,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 load_dotenv()
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
-SQS_QUEUE_URL = 'https://sqs.us-east-1.amazonaws.com/621594241226/AutoCTI_TaskQueue'
+SQS_QUEUE_URL = 'SQS_QUEUE_URL'
 REGION = 'us-east-1'
 
 ALLOWED_IDS = os.getenv('ALLOWED_CHAT_IDS', '').split(',')
