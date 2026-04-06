@@ -1,0 +1,15 @@
+# Security
+.env
+
+# Python & System caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+*.log
+
+# Bỏ qua lịch sử AWS (đề phòng lỡ tay)
+.aws/
