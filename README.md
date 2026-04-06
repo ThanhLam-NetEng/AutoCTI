@@ -8,24 +8,34 @@ Telegram — all within AWS Free Tier budget.
 ---
 
 ## System Architecture
-[Telegram] --> [AWS API Gateway] --> [Amazon SQS]
-|
-[EC2 Worker]
-(Docker Container)
-/            
-[Gemini AI]     [Playwright]
-(The Brain)     (The Claw)
-\            /
-[Amazon DynamoDB]
-|
-[Telegram Report]
+
+    [Telegram]
+        |
+        v
+    [AWS API Gateway]
+        |
+        v
+    [Amazon SQS]
+        |
+        v
+    [EC2 Worker - Docker Container]
+       /                    \
+      v                      v
+[Gemini AI]           [Playwright]
+(The Brain)           (The Claw)
+      \                      /
+       v                    v
+         [Amazon DynamoDB]
+                |
+                v
+         [Telegram Report]
 
 Flow:
 1. User sends message via Telegram
 2. Webhook hits API Gateway → message queued in SQS
 3. EC2 Worker polls SQS → validates Whitelist & Rate Limit
 4. Gemini AI analyzes threat → returns CTI report
-5. Hunter (Playwright) crawls The Hacker News daily at 8AM (GMT+7)
+5. Hunter (Playwright) crawls The Hacker News daily at 8AM GMT+7
 6. AI summarizes news → pushes briefing to Telegram via Cronjob
 
 ---
