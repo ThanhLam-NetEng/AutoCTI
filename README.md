@@ -9,9 +9,7 @@ Telegram — all within AWS Free Tier budget.
 
 ## System Architecture
 
-
-![Uploading autocti_architecture.svg…]()
-
+<img width="2125" height="1625" alt="autocti_architecture" src="https://github.com/user-attachments/assets/0095efcb-809c-49b5-83c4-b5f7ac39b33f" />
 
 Flow:
 1. User sends message via Telegram
