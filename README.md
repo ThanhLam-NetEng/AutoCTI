@@ -9,19 +9,9 @@ Telegram — all within AWS Free Tier budget.
 
 ## System Architecture
 
-```
-```mermaid
-graph TD
-    A[Telegram] -->|webhook| B[AWS API Gateway]
-    B --> C[Amazon SQS]
-    C --> D[EC2 Worker - Docker]
-    D --> E[Gemini AI - The Brain]
-    D --> F[Playwright - The Claw]
-    E --> G[Amazon DynamoDB]
-    F --> G
-    G -->|report| A
-    H[Cronjob 8AM] -->|crawl| F
-```
+
+![Uploading autocti_architecture.svg…]()
+
 
 Flow:
 1. User sends message via Telegram
