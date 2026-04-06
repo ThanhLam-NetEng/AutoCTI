@@ -45,6 +45,11 @@ Flow:
 
 ---
 
+## Project Structure
+
+## Project Structure
+
+```text
 autocti/
 ├── src/
 │   ├── worker.py       # SQS listener + AI response engine
@@ -55,6 +60,7 @@ autocti/
 ├── requirements.txt
 ├── .env.example
 └── README.md
+```
 
 ---
 
