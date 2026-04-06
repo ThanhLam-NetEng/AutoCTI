@@ -17,7 +17,6 @@ Telegram — all within AWS Free Tier budget.
 (The Brain)     (The Claw)
 \            /
 [Amazon DynamoDB]
-[Amazon S3]
 |
 [Telegram Report]
 
@@ -33,7 +32,7 @@ Flow:
 
 ## Features
 
-- Event-Driven Architecture — API Gateway triggers SQS, zero idle polling
+- Event-Driven & Long Polling — API Gateway queues messages to SQS, Worker uses Long Polling to optimize API calls and reduce CPU idle load
 - Security First — IAM Role (no hardcoded credentials), Whitelist, Rate Limiting
 - AI Persona — Thien Nhan Tuyet CTI analyst with structured threat analysis
 - Daily Briefing — Automated 8AM news crawl with CVE & MITRE ATT&CK mapping
@@ -55,7 +54,6 @@ Flow:
 
 ---
 
-## Project Structure
 autocti/
 ├── src/
 │   ├── worker.py       # SQS listener + AI response engine
@@ -72,9 +70,11 @@ autocti/
 ## Environment Variables
 
 Copy `.env.example` to `.env` and fill in your values:
+
 TELEGRAM_BOT_TOKEN=your_telegram_bot_token
 GEMINI_API_KEY=your_gemini_api_key
 ALLOWED_CHAT_IDS=your_telegram_chat_id
+SQS_QUEUE_URL=your_sqs_queue_url
 
 ---
 
@@ -99,7 +99,7 @@ ALLOWED_CHAT_IDS=your_telegram_chat_id
 
 | Service | Usage | Cost |
 |---|---|---|
-| EC2 t3.small | 24/7 | ~$0 (Free Tier) |
+| EC2 t2.micro | 24/7 | $0 (Free Tier 750h/month) |
 | Amazon SQS | <1M req/month | $0 |
 | DynamoDB | <25GB | $0 |
 | API Gateway | <1M calls/month | $0 |
@@ -111,3 +111,5 @@ ALLOWED_CHAT_IDS=your_telegram_chat_id
 ## Author
 
 Pham Thanh Lam — Network Security Student @ UIT
+
+## Project Structure
