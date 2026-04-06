@@ -47,8 +47,6 @@ Flow:
 
 ## Project Structure
 
-## Project Structure
-
 ```text
 autocti/
 ├── src/
@@ -68,10 +66,10 @@ autocti/
 
 Copy `.env.example` to `.env` and fill in your values:
 
-TELEGRAM_BOT_TOKEN=your_telegram_bot_token
-GEMINI_API_KEY=your_gemini_api_key
-ALLOWED_CHAT_IDS=your_telegram_chat_id
-SQS_QUEUE_URL=your_sqs_queue_url
+- TELEGRAM_BOT_TOKEN=your_telegram_bot_token
+- GEMINI_API_KEY=your_gemini_api_key
+- ALLOWED_CHAT_IDS=your_telegram_chat_id
+- SQS_QUEUE_URL=your_sqs_queue_url
 
 ---
 
