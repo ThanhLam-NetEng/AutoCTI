@@ -27,7 +27,7 @@ def send_telegram_message(text):
         print(f"❌ Lỗi truyền tin Telegram: {e}")
 
 def hunt_news():
-    print("🦅 Tuyết nhi đang xuất hồn đi tuần tra không gian mạng...")
+    print("🦅 Tuyết nhi đang mở võ hồn bay đi tuần tra không gian mạng...")
     news_data = []
 
     try:
@@ -87,7 +87,7 @@ Nội dung từng tin (mỗi tin 2-3 câu, tự nhiên):
 Kết (1 câu):
 Ngắn, sẵn sàng nhận lệnh. Không cần hoa mỹ.
 Ví dụ tốt: "Chủ nhân cần phân tích gì thêm cứ gọi Tuyết nhi."
-Ví dụ xấu: "Tuyết nhi nguyện đời đời bảo vệ Chủ nhân khỏi tà hồn xâm phạm..."
+Ví dụ xấu: "Tuyết nhi nguyện đời đời bảo vệ Chủ nhân khỏi tà hồn sư xâm phạm..."
 
 LUẬT BẮT BUỘC:
 - Viết text thuần túy, KHÔNG dùng **, ***, __, ## hay bất kỳ Markdown nào
