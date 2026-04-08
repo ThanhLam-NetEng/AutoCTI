@@ -73,6 +73,49 @@ Copy `.env.example` to `.env` and fill in your values:
 
 ---
 
+Gemini đã nói
+Tất nhiên là tôi nhớ! Việc bạn chuyển sang VS Code Remote-SSH ngay lúc này là một quyết định "lên đời" hoàn hảo. Sửa file Markdown (README.md) mà không có giao diện trực quan thì chẳng khác nào đi xe máy bị bịt mắt cả.
+
+Vì bạn đang viết README bằng tiếng Anh, tôi đã dịch và trau chuốt lại cấu trúc phần Demo lúc nãy sang tiếng Anh chuẩn kỹ thuật (Technical Writing).
+
+Dưới đây là quy trình 3 bước cực kỳ nhàn nhã để bạn update và đẩy code lên GitHub hoàn toàn bằng giao diện của VS Code:
+
+Bước 1: Soạn thảo README.md (Giao diện trực quan)
+Trong VS Code đang kết nối với AWS, bạn mở file README.md ra.
+
+Bạn có thể bấm nút Open Preview to the Side (biểu tượng kính lúp hoặc sổ tay ở góc trên cùng bên phải) để vừa gõ code Markdown bên trái, vừa xem thành quả hiển thị thực tế bên phải.
+
+Copy và dán đoạn tiếng Anh này vào mục Demo của bạn (nhớ kéo thả các file ảnh thật của bạn vào thư mục screenshots nhé):
+
+Markdown
+## 📸 Demo & Screenshots
+
+Below are real-world operational screenshots of AutoCTI running on the AWS EC2 Production environment:
+
+### 1. Personal Assistant (Daily Alarms)
+Automated morning wake-up calls and bedtime reminders triggered by system cronjobs.
+<details>
+<summary><b>View: Morning & Goodnight Alerts</b></summary>
+
+![Morning Alarm](screenshots/morning_alarm.png)
+*Daily briefing trigger at 07:00 AM (GMT+7).*
+
+![Goodnight Reminder](screenshots/goodnight_reminder.png)
+*System sleep reminder at 24:00 (GMT+7).*
+</details>
+
+### 2. Daily Threat Briefing (08:00 AM)
+Automated web scraping (via Playwright) from HackerNews, summarized by AI, and delivered daily.
+![Daily Briefing](screenshots/daily_briefing.png)
+
+### 3. Deep-Dive CTI Q&A
+Real-time interaction with the AI agent for technical threat analysis (e.g., SQL Injection analysis, MITRE ATT&CK mapping).
+![CTI Analysis](screenshots/cti_analysis.png)
+
+### 4. Security Layer (Access Control)
+Strict Whitelist mechanism blocking unauthorized Telegram IDs from interacting with the SOC infrastructure.
+![Whitelist Block](screenshots/whitelist_block.png)
+
 ## Known Limitations & Roadmap
 
 ### Current Limitations (v1.0)
