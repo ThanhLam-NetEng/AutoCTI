@@ -73,21 +73,6 @@ Copy `.env.example` to `.env` and fill in your values:
 
 ---
 
-Gemini đã nói
-Tất nhiên là tôi nhớ! Việc bạn chuyển sang VS Code Remote-SSH ngay lúc này là một quyết định "lên đời" hoàn hảo. Sửa file Markdown (README.md) mà không có giao diện trực quan thì chẳng khác nào đi xe máy bị bịt mắt cả.
-
-Vì bạn đang viết README bằng tiếng Anh, tôi đã dịch và trau chuốt lại cấu trúc phần Demo lúc nãy sang tiếng Anh chuẩn kỹ thuật (Technical Writing).
-
-Dưới đây là quy trình 3 bước cực kỳ nhàn nhã để bạn update và đẩy code lên GitHub hoàn toàn bằng giao diện của VS Code:
-
-Bước 1: Soạn thảo README.md (Giao diện trực quan)
-Trong VS Code đang kết nối với AWS, bạn mở file README.md ra.
-
-Bạn có thể bấm nút Open Preview to the Side (biểu tượng kính lúp hoặc sổ tay ở góc trên cùng bên phải) để vừa gõ code Markdown bên trái, vừa xem thành quả hiển thị thực tế bên phải.
-
-Copy và dán đoạn tiếng Anh này vào mục Demo của bạn (nhớ kéo thả các file ảnh thật của bạn vào thư mục screenshots nhé):
-
-Markdown
 ## 📸 Demo & Screenshots
 
 Below are real-world operational screenshots of AutoCTI running on the AWS EC2 Production environment:
