@@ -1,4 +1,4 @@
-# --- SECURITY (TỐI QUAN TRỌNG) ---
+# --- SECURITY---
 .env
 .aws/
 credentials.json
