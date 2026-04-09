@@ -1,15 +1,26 @@
-# Security
+# --- SECURITY (TỐI QUAN TRỌNG) ---
 .env
+.aws/
+credentials.json
+*.pem
+*.key
 
-# Python & System caches
+# --- PYTHON & VIRTUAL ENV ---
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
 .Python
 env/
 venv/
-*.log
+cti_env/
 
-# Bỏ qua lịch sử AWS (đề phòng lỡ tay)
-.aws/
+# --- LOGS & DATABASES ---
+*.log
+*.sqlite3
+*.db
+
+# --- IDE & OS TRASH ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

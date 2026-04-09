@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  autocti-worker:
+    build: .
+    container_name: tuyet_nhi_worker
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./src:/app/src

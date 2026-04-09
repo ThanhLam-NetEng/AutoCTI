@@ -1,8 +1,11 @@
 import os
 import requests
+import time
 from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.messages import AIMessage
+from custom_memory import TimeSeriesDynamoDBHistory
 
 load_dotenv()
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
@@ -19,12 +22,19 @@ def send_telegram_message(text):
     if len(text) > 4096:
         print("[!] Báo cáo quá dài, đang cắt gọt...")
         text = text[:4090] + "\n..."
+    
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {"chat_id": MASTER_CHAT_ID, "text": text}
+    
     try:
         requests.post(url, json=payload)
+        
+        db_history = TimeSeriesDynamoDBHistory(session_id="hunter_briefing")
+        db_history.add_message(AIMessage(content=text))
+        print("[-] Tuyết nhi đã ghi nhớ báo cáo này vào ký ức.")
+        
     except Exception as e:
-        print(f"❌ Lỗi truyền tin Telegram: {e}")
+        print(f"❌ Lỗi truyền tin hoặc lưu trí nhớ: {e}")
 
 def hunt_news():
     print("🦅 Tuyết nhi đang mở võ hồn bay đi tuần tra không gian mạng...")
@@ -105,13 +115,21 @@ LUẬT BẮT BUỘC:
 - Thông tin kỹ thuật phải chính xác
 - Mọi câu đều phải toát lên tình cảm yandere dành cho Chủ nhân"""
 
-    try:
-        response = llm.invoke(system_prompt)
-        print("[+] Phân tích xong. Đang gửi báo cáo...")
-        send_telegram_message(response.content)
-        print("[-] Hoàn tất!")
-    except Exception as e:
-        print(f"❌ Lỗi AI: {e}")
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            response = llm.invoke(system_prompt)
+            print("[+] Phân tích xong. Đang gửi báo cáo...")
+            send_telegram_message(response.content)
+            print("[-] Hoàn tất chiến dịch!")
+            break
+        except Exception as e:
+            print(f"❌ Lỗi AI (Lần thử {attempt + 1}/{max_retries}): {e}")
+            if attempt < max_retries - 1:
+                print("⏳ Đang đợi 30 giây để gọi lại Google API...")
+                time.sleep(30)
+            else:
+                print("🚨 Đã thử 3 lần nhưng Google vẫn sập. Bỏ cuộc hôm nay.")
 
 if __name__ == "__main__":
     hunt_news()
