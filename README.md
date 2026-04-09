@@ -1,9 +1,8 @@
 # AutoCTI — Serverless Cyber Threat Intelligence Assistant
 
-A 24/7 automated CTI pipeline built on AWS, powered by AI. AutoCTI
-automatically collects cybersecurity threat intelligence, analyzes
-CVEs and MITRE ATT&CK techniques, and delivers daily briefings via
-Telegram — all within AWS Free Tier budget.
+A 24/7 automated CTI pipeline built on AWS, powered by AI. AutoCTI automatically collects cybersecurity threat intelligence, analyzes CVEs and MITRE ATT&CK techniques, and delivers daily briefings via Telegram. 
+
+**v2.0 Major Update:** Re-architected with **LangGraph** (Agentic Workflow), **Tavily** (Real-time Search), and **DynamoDB** (Persistent Memory) to achieve a stateful, highly optimized, and robust SOC Assistant.
 
 ---
 
