@@ -12,23 +12,25 @@ Telegram — all within AWS Free Tier budget.
 <img width="2125" height="1625" alt="autocti_architecture" src="https://github.com/user-attachments/assets/0095efcb-809c-49b5-83c4-b5f7ac39b33f" />
 
 Flow:
-1. User sends message via Telegram
-2. Webhook hits API Gateway → message queued in SQS
-3. EC2 Worker polls SQS → validates Whitelist & Rate Limit
-4. Gemini AI analyzes threat → returns CTI report
-5. Hunter (Playwright) crawls The Hacker News daily at 8AM GMT+7
-6. AI summarizes news → pushes briefing to Telegram via Cronjob
+1. User sends message via Telegram.
+2. Webhook hits API Gateway → message queued in SQS.
+3. EC2 Worker (Dockerized) polls SQS → validates Whitelist & Thread-safe Rate Limit.
+4. **LangGraph Agent** retrieves conversation history from **DynamoDB**.
+5. Agent decides if real-time web search (**Tavily**) is needed based on context.
+6. Gemini AI analyzes threat → returns CTI report & saves Audit to Database.
+7. Hunter crawls top security news daily at 8AM GMT+7 (Exponential Backoff enabled).
 
 ---
 
 ## Features
 
-- Event-Driven & Long Polling — API Gateway queues messages to SQS, Worker uses Long Polling to optimize API calls and reduce CPU idle load
-- Security First — IAM Role (no hardcoded credentials), Whitelist, Rate Limiting
-- AI Persona — Thien Nhan Tuyet CTI analyst with structured threat analysis
-- Daily Briefing — Automated 8AM news crawl with CVE & MITRE ATT&CK mapping
-- FinOps Optimized — Entire stack runs within AWS Free Tier (~$0/month)
-- Docker — Fully containerized for portability and reproducibility
+- **Agentic Workflow (New in v2.0):** Uses LangGraph to dynamically route tasks, enabling the AI to search the internet autonomously when asked about recent threats.
+- **Persistent Memory (New in v2.0):** Integrated AWS DynamoDB to store conversation context (Session IDs) and Audit logs with microsecond precision.
+- **Ultra-Lightweight Web Automation:** Replaced Playwright with Tavily Search API, reducing container RAM usage by ~80%.
+- **Resilience & Rate Limiting:** Built-in `threading.Lock()` for rate limiting and Exponential Backoff to gracefully handle Google API 503/429 limits.
+- **Security First:** IAM Role (no hardcoded credentials), Strict Telegram Whitelist.
+- **AI Persona:** "Thien Nhan Tuyet" — A CTI analyst with a fiercely loyal (Yandere-lite) personality.
+- **Docker Compose:** Fully containerized with `restart: always` for immortal uptime on EC2.
 
 ---
 
@@ -36,12 +38,12 @@ Flow:
 
 | Layer | Technology |
 |---|---|
-| Cloud Infrastructure | AWS EC2, SQS, DynamoDB, API Gateway, IAM |
-| AI Engine | Google Gemini 2.5 Flash via LangChain |
-| Web Automation | Playwright (Headless Chromium) |
-| Runtime | Python 3.11, Docker |
+| Cloud Infrastructure | AWS EC2 (t3.small), SQS, DynamoDB, API Gateway, IAM |
+| AI Engine | Google Gemini 2.5 Flash |
+| Agentic Framework | LangChain & LangGraph |
+| Web Search API | Tavily |
+| Runtime | Python 3.12, Docker & Docker Compose |
 | Messaging | Telegram Bot API |
-| Scheduling | Linux Cronjob |
 
 ---
 
@@ -50,11 +52,13 @@ Flow:
 ```text
 autocti/
 ├── src/
-│   ├── worker.py       # SQS listener + AI response engine
-│   ├── hunter.py       # Web crawler + daily briefing
-│   ├── morning.py      # 7AM greeting scheduler
-│   └── goodnight.py    # 12AM rest reminder
-├── Dockerfile
+│   ├── worker.py          # SQS listener + LangGraph Agent + Database logging
+│   ├── hunter.py          # Tavily news crawler + daily briefing
+│   ├── morning.py         # 7AM greeting scheduler
+│   ├── goodnight.py       # 12AM rest reminder
+│   └── custom_memory.py   # DynamoDB BaseChatMessageHistory implementation
+├── docker-compose.yml     # Container orchestration
+├── Dockerfile             # Multi-layer slim Python image
 ├── requirements.txt
 ├── .env.example
 └── README.md
@@ -64,12 +68,17 @@ autocti/
 
 ## Environment Variables
 
-Copy `.env.example` to `.env` and fill in your values:
+Copy .env.example to .env and fill in your values. (Note: Ensure you have your TAVILY_API_KEY for v2.0).
 
-- TELEGRAM_BOT_TOKEN=your_telegram_bot_token
-- GEMINI_API_KEY=your_gemini_api_key
-- ALLOWED_CHAT_IDS=your_telegram_chat_id
-- SQS_QUEUE_URL=your_sqs_queue_url
+TELEGRAM_BOT_TOKEN=your_telegram_bot_token
+
+GEMINI_API_KEY=your_gemini_api_key
+
+TAVILY_API_KEY=your_tavily_api_key
+
+ALLOWED_CHAT_IDS=your_telegram_chat_id
+
+SQS_QUEUE_URL=your_sqs_queue_url
 
 ---
 
@@ -111,10 +120,16 @@ Strict Whitelist mechanism blocking unauthorized Telegram IDs from interacting w
 
 ### Roadmap (v2.0)
 
-- [ ] LangChain Memory + DynamoDB for conversation context
-- [ ] RAG (Retrieval-Augmented Generation) with Vector DB
-- [ ] Tavily Search API integration for real-time web search in worker
-- [ ] NVD API integration for automated CVE tracking
+- [x] LangChain Memory + DynamoDB for conversation context.
+- [x] Tavily Search API integration for real-time web search in worker.
+- [x] Replace Playwright to optimize EC2 RAM limitations.
+- [x] Fix SQS/DynamoDB Race Conditions with Global Agents & Locks.
+
+### Roadmap (v3.0)
+
+- [ ] RAG (Retrieval-Augmented Generation) with Vector DB (e.g., Pinecone/Chroma) to query internal SOC playbooks.
+- [ ] NVD API integration for automated & precise CVE tracking.
+- [ ] Automated IOC (IP/Domain) extraction and submission to VirusTotal API.
 
 ---
 
