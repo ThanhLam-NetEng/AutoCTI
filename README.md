@@ -1,4 +1,4 @@
-# AutoCTI — Serverless Cyber Threat Intelligence Assistant
+# 🛡️ AutoCTI v2.0 — Autonomous Cyber Threat Intelligence Agent
 
 A 24/7 automated CTI pipeline built on AWS, powered by AI. AutoCTI automatically collects cybersecurity threat intelligence, analyzes CVEs and MITRE ATT&CK techniques, and delivers daily briefings via Telegram. 
 
@@ -6,9 +6,9 @@ A 24/7 automated CTI pipeline built on AWS, powered by AI. AutoCTI automatically
 
 ---
 
-## System Architecture
+## 🏗️ System Architecture
 
-<img width="2125" height="1625" alt="autocti_architecture" src="https://github.com/user-attachments/assets/0095efcb-809c-49b5-83c4-b5f7ac39b33f" />
+![autocti_architecture](https://github.com/user-attachments/assets/f4a2f631-76b2-427f-aaef-6247ed69e1b7)
 
 Flow:
 1. User sends message via Telegram.
@@ -21,7 +21,7 @@ Flow:
 
 ---
 
-## Features
+## ✨ Features
 
 - **Agentic Workflow (New in v2.0):** Uses LangGraph to dynamically route tasks, enabling the AI to search the internet autonomously when asked about recent threats.
 - **Persistent Memory (New in v2.0):** Integrated AWS DynamoDB to store conversation context (Session IDs) and Audit logs with microsecond precision.
@@ -33,7 +33,7 @@ Flow:
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -46,7 +46,7 @@ Flow:
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
 ```text
 autocti/
@@ -65,7 +65,7 @@ autocti/
 
 ---
 
-## Environment Variables
+## ⚙️ Environment Variables
 
 Copy .env.example to .env and fill in your values. (Note: Ensure you have your TAVILY_API_KEY for v2.0).
 
@@ -117,7 +117,7 @@ Strict Whitelist mechanism blocking unauthorized Telegram IDs from interacting w
 - No real-time web search in worker (only hunter has Playwright)
 - Hallucination risk with niche/local Vietnamese products not in training data
 
-### Roadmap (v2.0)
+### 🗺️ Roadmap (v2.0)
 
 - [x] LangChain Memory + DynamoDB for conversation context.
 - [x] Tavily Search API integration for real-time web search in worker.
@@ -132,7 +132,7 @@ Strict Whitelist mechanism blocking unauthorized Telegram IDs from interacting w
 
 ---
 
-## Cost Estimate
+## 💰 Cost Estimate
 
 | Service | Usage | Cost |
 |---|---|---|
@@ -145,6 +145,6 @@ Strict Whitelist mechanism blocking unauthorized Telegram IDs from interacting w
 
 ---
 
-## Author
+## 👨‍💻 Author
 
 Pham Thanh Lam — Network Security Student @ UIT
