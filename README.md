@@ -8,7 +8,7 @@ A 24/7 automated CTI pipeline built on AWS, powered by AI. AutoCTI automatically
 
 ## 🏗️ System Architecture
 
-![autocti_v2_architecture](https://github.com/user-attachments/assets/99c2d846-ad1c-47b1-aff3-f158eb3b6de4)
+![Architecture](autocti_v2_architecture.svg)
 
 Flow:
 1. User sends message via Telegram.
