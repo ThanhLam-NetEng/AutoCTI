@@ -1,4 +1,4 @@
-<img width="498" height="1023" alt="image" src="https://github.com/user-attachments/assets/01ab7a97-c79d-4ad6-85c7-511f531217b9" /># 🛡️ AutoCTI — Autonomous Cyber Threat Intelligence Agent
+# 🛡️ AutoCTI — Autonomous Cyber Threat Intelligence Agent
 
 A 24/7 automated CTI pipeline built on AWS, powered by AI. AutoCTI automatically collects cybersecurity threat intelligence, analyzes CVEs and MITRE ATT&CK techniques, and delivers daily briefings via Telegram. 
 
