@@ -110,6 +110,7 @@ Strict Whitelist mechanism blocking unauthorized Telegram IDs from interacting w
 ![Whitelist Block](screenshots/whitelist_block.png)
 
 ### 5. Agentic Web Search (v2.0 Exclusive) 🌟
+The AI autonomously decides to use the `TavilySearch` tool to crawl the internet for real-time news when asked about the latest APT campaigns.
 ![Agentic Search](screenshots/tavily_search.png)
 
 ## Known Limitations & Roadmap
