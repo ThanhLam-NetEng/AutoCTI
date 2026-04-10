@@ -113,7 +113,11 @@ Strict Whitelist mechanism blocking unauthorized Telegram IDs from interacting w
 The AI autonomously decides to use the `TavilySearch` tool to crawl the internet for real-time news when asked about the latest APT campaigns.
 ![Agentic Search](screenshots/tavily_search.png)
 
-## Known Limitations & Roadmap
+### 6. Persistent Memory & Context (v2.0 Exclusive) 🧠
+Thanks to DynamoDB, the AI remembers context from previous messages, creating a seamless, stateful conversational experience.
+![Conversation Memory](screenshots/dynamodb_memory.png)
+
+## 🗺️ Known Limitations & Roadmap
 
 ### Current Limitations (v1.0)
 
@@ -121,7 +125,7 @@ The AI autonomously decides to use the `TavilySearch` tool to crawl the internet
 - No real-time web search in worker (only hunter has Playwright)
 - Hallucination risk with niche/local Vietnamese products not in training data
 
-### 🗺️ Roadmap (v2.0)
+### Roadmap (v2.0)
 
 - [x] LangChain Memory + DynamoDB for conversation context.
 - [x] Tavily Search API integration for real-time web search in worker.
