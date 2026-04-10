@@ -1,4 +1,4 @@
-# 🛡️ AutoCTI — Autonomous Cyber Threat Intelligence Agent
+<img width="498" height="1023" alt="image" src="https://github.com/user-attachments/assets/01ab7a97-c79d-4ad6-85c7-511f531217b9" /># 🛡️ AutoCTI — Autonomous Cyber Threat Intelligence Agent
 
 A 24/7 automated CTI pipeline built on AWS, powered by AI. AutoCTI automatically collects cybersecurity threat intelligence, analyzes CVEs and MITRE ATT&CK techniques, and delivers daily briefings via Telegram. 
 
@@ -108,6 +108,9 @@ Real-time interaction with the AI agent for technical threat analysis (e.g., SQL
 ### 4. Security Layer (Access Control)
 Strict Whitelist mechanism blocking unauthorized Telegram IDs from interacting with the SOC infrastructure.
 ![Whitelist Block](screenshots/whitelist_block.png)
+
+### 5. Agentic Web Search (v2.0 Exclusive) 🌟
+![Agentic Search](screenshots/tavily_search.png)
 
 ## Known Limitations & Roadmap
 
