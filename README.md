@@ -23,13 +23,19 @@ Flow:
 
 ## ✨ Features
 
-- **Agentic Workflow (New in v2.0):** Uses LangGraph to dynamically route tasks, enabling the AI to search the internet autonomously when asked about recent threats.
-- **Persistent Memory (New in v2.0):** Integrated AWS DynamoDB to store conversation context (Session IDs) and Audit logs with microsecond precision.
-- **Ultra-Lightweight Web Automation:** Replaced Playwright with Tavily Search API, reducing container RAM usage by ~80%.
-- **Resilience & Rate Limiting:** Built-in `threading.Lock()` for rate limiting and Exponential Backoff to gracefully handle Google API 503/429 limits.
-- **Security First:** IAM Role (no hardcoded credentials), Strict Telegram Whitelist.
-- **AI Persona:** "Thien Nhan Tuyet" — A CTI analyst with a fiercely loyal (Yandere-lite) personality.
-- **Docker Compose:** Fully containerized with `restart: always` for immortal uptime on EC2.
+- **Agentic Workflow (New in v2.0):** Uses LangGraph to dynamically route tasks, 
+  enabling the AI to search the internet autonomously when asked about recent threats.
+- **Persistent Memory (New in v2.0):** Integrated AWS DynamoDB to store conversation 
+  context (Session IDs) and Audit logs with microsecond precision.
+- **Ultra-Lightweight Design:** Replaced Playwright with Tavily Search API, 
+  reducing container RAM usage by ~80%.
+- **Resilience & Rate Limiting:** Built-in threading.Lock() for rate limiting 
+  and Exponential Backoff to gracefully handle API 503/429 errors.
+- **Security First:** IAM Role (no hardcoded credentials), strict Telegram Whitelist.
+- **AI Persona:** Custom-engineered CTI analyst persona with domain-specific 
+  response formatting and threat classification logic.
+- **Docker Compose:** Fully containerized with restart: always for high-availability 
+  deployment on EC2.
 
 ---
 
@@ -117,26 +123,18 @@ The AI autonomously decides to use the `TavilySearch` tool to crawl the internet
 Thanks to DynamoDB, the AI remembers context from previous messages, creating a seamless, stateful conversational experience.
 ![Conversation Memory](screenshots/dynamodb_memory.png)
 
-## 🗺️ Known Limitations & Roadmap
+## 🗺️ Development Journey & Roadmap
 
-### Current Limitations (v1.0)
+### v1.0 → v2.0 Improvements
+- Migrated from stateless to stateful architecture with DynamoDB
+- Added real-time web search via Tavily (replaced Playwright, -80% RAM)
+- Implemented LangGraph Agentic Workflow for autonomous tool use
+- Fixed SQS/DynamoDB Race Conditions with threading.Lock()
 
-- Stateless architecture — AI has no memory of previous messages
-- No real-time web search in worker (only hunter has Playwright)
-- Hallucination risk with niche/local Vietnamese products not in training data
-
-### Roadmap (v2.0)
-
-- [x] LangChain Memory + DynamoDB for conversation context.
-- [x] Tavily Search API integration for real-time web search in worker.
-- [x] Replace Playwright to optimize EC2 RAM limitations.
-- [x] Fix SQS/DynamoDB Race Conditions with Global Agents & Locks.
-
-### Roadmap (v3.0)
-
-- [ ] RAG (Retrieval-Augmented Generation) with Vector DB (e.g., Pinecone/Chroma) to query internal SOC playbooks.
-- [ ] NVD API integration for automated & precise CVE tracking.
-- [ ] Automated IOC (IP/Domain) extraction and submission to VirusTotal API.
+### v3.0 Planned Features
+- [ ] RAG with Vector DB (Pinecone/Chroma) for internal SOC playbook queries
+- [ ] NVD API integration for automated CVE tracking
+- [ ] Automated IOC extraction and VirusTotal submission
 
 ---
 
