@@ -98,7 +98,7 @@ Automated morning wake-up calls and bedtime reminders triggered by system cronjo
 </details>
 
 ### 2. Daily Threat Briefing (08:00 AM)
-Automated web scraping (via Playwright) from HackerNews, summarized by AI, and delivered daily.
+Automated intelligence collection via Tavily Search API, summarized by AI, and delivered daily.
 ![Daily Briefing](screenshots/daily_briefing.png)
 
 ### 3. Deep-Dive CTI Q&A
