@@ -21,7 +21,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dev dependencies
-        run: pip install pytest flake8
+        run: pip install pytest flake8 requests python-dotenv
 
       - name: Lint — syntax errors (hard fail)
         run: |
