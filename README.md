@@ -6,6 +6,8 @@ A 24/7 automated CTI pipeline built on AWS, powered by AI. AutoCTI automatically
 
 ---
 
+![CI](https://github.com/ThanhLam-NetEng/AutoCTI/actions/workflows/ci.yml/badge.svg)
+
 ## 🏗️ System Architecture
 
 ![Architecture](autocti_v2_architecture.svg)
